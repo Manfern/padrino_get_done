@@ -1,0 +1,14 @@
+ru:
+  models:
+    account:
+      name: Учетная запись
+      attributes:
+        id: ID
+        name: Имя 
+        surname: Фамилия
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        salt: Соль
+        crypted_password: Секретный пароль
+        role: Роль

@@ -19,7 +19,7 @@ Bundler.require(:default, RACK_ENV)
 # ## Configure your I18n
 #
  I18n.default_locale = :ru
- I18n.enforce_available_locales = true
+ #I18n.enforce_available_locales = true
 #
 # ## Configure your HTML5 data helpers
 #
@@ -37,7 +37,8 @@ Bundler.require(:default, RACK_ENV)
 ##
 # Add your before (RE)load hooks here
 #
-Padrino.before_load do
+ Padrino.before_load do
+   I18n.locale = :ru
 end
 
 ##

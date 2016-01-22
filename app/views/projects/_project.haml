@@ -1,0 +1,5 @@
+.project
+  .title= link_to project.title, url_for(:projects, :show, :id => project)
+  .start-date= project.start
+  .end-date= project.end
+  .body= simple_format(project.body)

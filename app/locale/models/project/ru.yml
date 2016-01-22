@@ -1,0 +1,13 @@
+ru:
+  models:
+    project:
+      name: Проект
+      attributes:
+        id: Id
+        title: Название
+        body: Описание
+        start: Дата начала
+        end: Дата окончания
+        done: Зделан?
+        created_at: Created at
+        updated_at: Updated at

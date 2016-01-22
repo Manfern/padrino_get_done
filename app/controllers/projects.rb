@@ -20,7 +20,8 @@ GetDoneNow::App.controllers :projects do
   # end
   
   get :index do
-
+    @projects = Project.order('start').all
+    render 'projects/index'
   end
 
   get :show do
