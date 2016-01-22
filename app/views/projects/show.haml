@@ -1,0 +1,13 @@
+- @title = @project.title
+#show
+  .project
+    .title= @project.title
+    .start-date= @project.start
+    .end-date= @project.end
+    - if @project.done == true
+      .status Завершен
+    - else
+      .status В процессе
+      
+    .body= simple_format(@project.body)
+%p= link_to 'Все проекты', url_for(:projects, :index)

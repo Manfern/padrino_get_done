@@ -1,3 +1,6 @@
 - @title = "Все проекты"
 %h1 Все проекты
 #projects= partial 'projects/project', :collection => @projects
+
+%h2 Выполненные проекты (архив)
+#archived_projects= partial 'projects/project', :collection => @archived_projects

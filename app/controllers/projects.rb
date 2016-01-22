@@ -20,12 +20,14 @@ GetDoneNow::App.controllers :projects do
   # end
   
   get :index do
-    @projects = Project.order('start').all
+    @projects = Project.order('start').where(done: false)
+    @archived_projects = Project.order('start').where(done: true)
     render 'projects/index'
   end
 
-  get :show do
-
+  get :show, :with => :id do
+    @project = Project.find_by_id(params[:id])
+    render 'projects/show'
   end
 
 end
