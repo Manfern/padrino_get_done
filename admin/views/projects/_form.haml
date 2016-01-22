@@ -1,0 +1,37 @@
+- error = @project.errors.include?(:title)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :title, :class => 'control-label'
+  .controls
+    =f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:body)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :body, :class => 'control-label'
+  .controls
+    ~f.text_area :body, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:start)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :start, :class => 'control-label'
+  .controls
+    =f.text_field :start, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:start, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:end)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :end, :class => 'control-label'
+  .controls
+    =f.text_field :end, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:end, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:done)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :done, :class => 'control-label'
+  .controls
+    =f.check_box :done, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:done, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:projects, :index), :class => 'btn btn-default'
