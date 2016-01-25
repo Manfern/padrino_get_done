@@ -1,18 +1,31 @@
+# coding: utf-8
 GetDoneNow::Admin.controllers :projects do
   get :index do
-    @title = "Projects"
+    @title = "Все проекты"
     @projects = Project.all
+    @accounts = Account.all#(:select => 'name, surname, id')
+    
     render 'projects/index'
   end
 
   get :new do
     @title = pat(:new_title, :model => 'project')
     @project = Project.new
+    @accounts = Account.all#(:select => 'name, surname, id')
     render 'projects/new'
   end
 
   post :create do
-    @project = Project.new(params[:project])
+    #p params
+    pdata = params[:project]
+
+    if pdata[:account_id]
+      pdata["accounts"] = Account.find(pdata[:account_id])
+    end
+    
+    pdata.delete "account_id"
+    
+    @project = Project.new(pdata)
     if @project.save
       @title = pat(:create_title, :model => "project #{@project.id}")
       flash[:success] = pat(:create_success, :model => 'Project')
@@ -27,6 +40,7 @@ GetDoneNow::Admin.controllers :projects do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "project #{params[:id]}")
     @project = Project.find(params[:id])
+    @accounts = Account.all#(:select => 'name, surname, id')
     if @project
       render 'projects/edit'
     else
@@ -38,6 +52,12 @@ GetDoneNow::Admin.controllers :projects do
   put :update, :with => :id do
     @title = pat(:update_title, :model => "project #{params[:id]}")
     @project = Project.find(params[:id])
+    pdata = params[:project]
+    if pdata[:account_id]
+      pdata["accounts"] = Account.find(pdata[:account_id])
+    end
+    pdata.delete "account_id"
+    @accounts = Account.all#(:select => 'name, surname, id')
     if @project
       if @project.update_attributes(params[:project])
         flash[:success] = pat(:update_success, :model => 'Project', :id =>  "#{params[:id]}")

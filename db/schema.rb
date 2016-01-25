@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at"
   end
 
+  create_table "accounts_projects", id: false, force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "body"

@@ -1,5 +1,14 @@
 .project
-  .title= link_to project.title, url_for(:projects, :show, :id => project)
+  %h2
+    .title= link_to project.title, url_for(:projects, :show, :id => project)
   .start-date= project.start
   .end-date= project.end
   .body= simple_format(project.body)
+  .by 
+    %strong Участники проекта
+    %br
+    - project.accounts.each do |acc|
+      = acc.name + " " + acc.surname
+      %br
+%br
+%br
