@@ -22,6 +22,7 @@ GetDoneNow::App.controllers :projects do
   get :index do
     @projects = Project.order('start').where(done: false)
     @archived_projects = Project.order('start').where(done: true)
+    
     render 'projects/index'
   end
 
