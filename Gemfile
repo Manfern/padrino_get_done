@@ -26,7 +26,7 @@ gem 'sqlite3'
 # Test requirements
 
 # Padrino Stable Gem
-gem 'padrino', '0.13.0'
+gem 'padrino', '0.13.1'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'

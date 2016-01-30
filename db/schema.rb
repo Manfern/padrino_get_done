@@ -38,4 +38,19 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title"
+    t.date     "start"
+    t.date     "soft_deadline"
+    t.date     "hard_deadline"
+    t.boolean  "done"
+    t.integer  "priority"
+    t.string   "tag"
+    t.text     "body"
+    t.integer  "account_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
